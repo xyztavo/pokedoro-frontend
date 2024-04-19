@@ -37,7 +37,12 @@ export default function User() {
 
     return (
         <>
-            <h1 className="mt-4 text-center">Account</h1>
+            <div className="space-y-4 mt-4">
+                <h1 className="text-center">Account</h1>
+                <Button disabled={isPending} onClick={() => {
+                    mutateAddPokemon()
+                }} className="flex flex-row m-auto justify-center gap-4" variant={'secondary'}>{isPending ? <><Loader2 className=" animate-spin" />Loading pokemon...</> : `Get me a random pokemon`}</Button>
+            </div>
             {isSuccess &&
                 <Dialog defaultOpen>
                     <DialogContent>
@@ -74,11 +79,6 @@ export default function User() {
                 </Dialog>
             }
             <UserPokemons />
-            <div className="flex flex-row justify-center mt-4">
-                <Button disabled={isPending} onClick={() => {
-                    mutateAddPokemon()
-                }} className="flex flex-row items-center justify-center gap-4">{isPending ? <><Loader2 className=" animate-spin" />Loading pokemon...</> : `Get me a random pokemon`}</Button>
-            </div>
         </>
-    )   
+    )
 }

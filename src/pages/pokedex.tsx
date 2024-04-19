@@ -16,6 +16,7 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Search } from "lucide-react"
 import axios from "axios"
+import { Loader } from "@/components/ui/loader"
 
 export function Pokedex() {
     const [searchPageParams, setSearchPageParams] = useSearchParams()
@@ -77,7 +78,7 @@ export function Pokedex() {
                     <Button variant={'outline'} className=' w-[40px] h-[40px]' type="submit"><Search className="scale-[3.5]" /></Button>
                 </form>
             </div>
-            {isLoading ? <div>loading...</div> :
+            {isLoading ? <Loader /> :
                 isError ? <div>No pokemons found</div> :
                     data?.data.pokemons.length < 1 ? <div>no </div> :
                         (data &&

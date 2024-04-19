@@ -1,4 +1,5 @@
 import { Button, buttonVariants } from "@/components/ui/button"
+import { Loader } from "@/components/ui/loader"
 import checkTypeReturnIcon from "@/lib/utils/checkTypeReturnIcon"
 import { TPokemon } from "@/types/Pokemons"
 import { useQuery } from "@tanstack/react-query"
@@ -21,7 +22,7 @@ export function Home() {
             </div>
             <div className="flex flex-row flex-wrap justify-center items-center gap-4 p-2">
 
-                {isLoading ? <div>loading...</div> : data.pokemons.map((pokemon: TPokemon) =>
+                {isLoading ? <Loader /> : data.pokemons.map((pokemon: TPokemon) =>
                     <div className="border rounded-md" key={pokemon.id}>
                         <div className="flex border-b justify-center items-center">
                             {pokemon.type_list.map((typeObj) => {

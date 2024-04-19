@@ -8,6 +8,7 @@ import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { Search } from "lucide-react";
 import axios from "axios";
+import { Loader } from "./ui/loader";
 
 export default function UserPokemons() {
     const [searchPageParams, setSearchPageParams] = useSearchParams()
@@ -77,7 +78,7 @@ export default function UserPokemons() {
                     <Button variant={'outline'} className=' w-[40px] h-[40px]' type="submit"><Search className="scale-[3.5]" /></Button>
                 </form>
             </div>
-            {isLoading ? <div>loading...</div> :
+            {isLoading ? <Loader /> :
                 isError ? <div>No pokemons found</div> :
                     data?.data.user.pokemons.length < 1 ? <div className="flex flex-col">You got no pokemons :C</div> :
                         (data &&
