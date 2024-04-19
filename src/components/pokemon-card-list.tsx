@@ -1,7 +1,7 @@
 import checkTypeReturnIcon from "@/lib/utils/checkTypeReturnIcon"
 import { TPokemon } from "@/types/Pokemons"
 
-export default function pokemonCardList(pokemonsArray) {
+export default function pokemonCardList(pokemonsArray: TPokemon[]) {
     return pokemonsArray.map((pokemon: TPokemon) =>
         <div className="border rounded-md" key={pokemon.id}>
             <div className="flex border-b justify-center items-center">
