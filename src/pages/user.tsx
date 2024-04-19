@@ -16,7 +16,7 @@ import { Loader2 } from "lucide-react";
 
 export default function User() {
     const token = localStorage.getItem('auth');
-    const getRandomNumber = Math.floor(Math.random() * 700);
+    const getRandomNumber = Math.floor(Math.random() * 650);
     const queryClient = useQueryClient();
     const userData = getUser();
 
