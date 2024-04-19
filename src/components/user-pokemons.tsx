@@ -67,7 +67,7 @@ export default function UserPokemons() {
 
     return (
         <div className="font-pixel text-[12px] flex flex-col items-center justify-center space-y-4 mt-4">
-            <div className="flex flex-row justify-center items-center gap-4">
+            <div className="flex flex-col md:flex-row justify-center items-center gap-4">
                 <h1 className="font-semibold text-center text-lg my-4">{userData.name} pokemons:</h1>
                 <form onSubmit={(e) => {
                     e.preventDefault()
@@ -77,13 +77,12 @@ export default function UserPokemons() {
                     <Button variant={'outline'} className=' w-[40px] h-[40px]' type="submit"><Search className="scale-[3.5]" /></Button>
                 </form>
             </div>
-            <div className="flex flex-row flex-wrap justify-center items-center gap-4 p-2">
                 {isLoading ? <div>loading...</div> :
                     isError ? <div>No pokemons found</div> :
                         data?.data.user.pokemons.length < 1 ? <div className="flex flex-col">You got no pokemons :C</div> :
                             (data &&
                                 <div className="space-y-8">
-                                    <div className="flex flex-row flex-wrap justify-center items-center gap-4 p-2">
+                                    <div className="flex flex-row flex-wrap justify-center items-center gap-4">
                                         {pokemonCardList(data.data.user.pokemons)}
                                     </div>
                                     <Pagination>
@@ -116,7 +115,6 @@ export default function UserPokemons() {
                                 </div>
                             )
                 }
-            </div>
         </div>
     )
 }
