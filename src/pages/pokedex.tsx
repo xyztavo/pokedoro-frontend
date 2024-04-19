@@ -59,7 +59,7 @@ export function Pokedex() {
         setSearchPageParams({ page: pageCasted.toLocaleString() })
     }
 
-    const { data, isLoading, isError } = useQuery({
+    const { data, isLoading, isError, isPending, isFetching } = useQuery({
         queryKey: ['pokemonspokedex', page, isPokemonQuery], queryFn: () => {
             const response = axios.get(`https://pokedoro-backend.onrender.com/pokemon?pageIndex=${page ? alteredPage : 0}&query=${pokemonQuery}`)
             return response
@@ -78,7 +78,7 @@ export function Pokedex() {
                     <Button variant={'outline'} className=' w-[40px] h-[40px]' type="submit"><Search className="scale-[3.5]" /></Button>
                 </form>
             </div>
-            {isLoading ? <Loader /> :
+            {isLoading || isPending || isFetching ? <Loader /> :
                 isError ? <div>No pokemons found</div> :
                     data?.data.pokemons.length < 1 ? <div>no </div> :
                         (data &&

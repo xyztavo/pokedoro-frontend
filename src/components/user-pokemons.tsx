@@ -53,7 +53,7 @@ export default function UserPokemons() {
 
 
     const token = localStorage.getItem("auth");
-    const { data, isLoading, isError } = useQuery({
+    const { data, isLoading, isError, isPending, isFetching } = useQuery({
         queryKey: ['pokemonspokedex', isPokemonQuery, page], queryFn: async () => {
             const response = await axios.get(`https://pokedoro-backend.onrender.com/user/${userData.id}?pageIndex=${page ? alteredPage : 0}&pokemonQ=${pokemonQuery}`, {
                 headers: {
@@ -78,7 +78,7 @@ export default function UserPokemons() {
                     <Button variant={'outline'} className=' w-[40px] h-[40px]' type="submit"><Search className="scale-[3.5]" /></Button>
                 </form>
             </div>
-            {isLoading ? <Loader /> :
+            {isLoading || isPending || isFetching ? <Loader /> :
                 isError ? <p>No pokemons found</p> :
                     data?.data.user.pokemons.length < 1 ? <div className="flex flex-col">You got no pokemons :C</div> :
                         (data &&
