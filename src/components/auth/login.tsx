@@ -19,6 +19,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
+import { Loader2 } from "lucide-react";
 
 
 const loginSchema = z.object({
@@ -104,7 +105,7 @@ export default function Login() {
                     )}
                 />
                 {isPending ?
-                    <Button disabled type="submit">Log in</Button>
+                    <Button disabled type="submit" className="flex items-center gap-4"><Loader2 className="animate-spin"/>Log in</Button>
                     : <Button type="submit">Log in</Button>
                 }
             </form>
