@@ -8,7 +8,7 @@ import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { Search } from "lucide-react";
 import axios from "axios";
-import { Loader } from "./ui/loader";
+import { Loader } from "./ui/custom/loader";
 
 export default function UserPokemons() {
     const [searchPageParams, setSearchPageParams] = useSearchParams()

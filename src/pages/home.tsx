@@ -1,5 +1,5 @@
 import { Button, buttonVariants } from "@/components/ui/button"
-import { Loader } from "@/components/ui/loader"
+import { Loader } from "@/components/ui/custom/loader"
 import checkTypeReturnIcon from "@/lib/utils/checkTypeReturnIcon"
 import { TPokemon } from "@/types/Pokemons"
 import { useQuery } from "@tanstack/react-query"

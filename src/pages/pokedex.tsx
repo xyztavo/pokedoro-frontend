@@ -16,7 +16,7 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Search } from "lucide-react"
 import axios from "axios"
-import { Loader } from "@/components/ui/loader"
+import { Loader } from "@/components/ui/custom/loader"
 
 export function Pokedex() {
     const [searchPageParams, setSearchPageParams] = useSearchParams()
