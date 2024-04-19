@@ -67,7 +67,7 @@ export default function UserPokemons() {
     const userData = getUser()
 
     return (
-        <div className="font-pixel text-[12px] space-y-8 p-2">
+        <div className="font-pixel text-[12px] space-y-8 p-2 flex flex-col items-center justify-center">
             <div className="flex flex-col md:flex-row justify-center items-center gap-4">
                 <h1 className="font-semibold text-center text-lg my-4">{userData.name} pokemons:</h1>
                 <form onSubmit={(e) => {
@@ -79,7 +79,7 @@ export default function UserPokemons() {
                 </form>
             </div>
             {isLoading ? <Loader /> :
-                isError ? <div>No pokemons found</div> :
+                isError ? <p>No pokemons found</p> :
                     data?.data.user.pokemons.length < 1 ? <div className="flex flex-col">You got no pokemons :C</div> :
                         (data &&
                             <div className="space-y-8">
