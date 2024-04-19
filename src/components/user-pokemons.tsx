@@ -66,7 +66,7 @@ export default function UserPokemons() {
     const userData = getUser()
 
     return (
-        <div className="font-pixel text-[12px] flex flex-col items-center justify-center space-y-4 mt-4">
+        <div className="font-pixel text-[12px]">
             <div className="flex flex-col md:flex-row justify-center items-center gap-4">
                 <h1 className="font-semibold text-center text-lg my-4">{userData.name} pokemons:</h1>
                 <form onSubmit={(e) => {
