@@ -66,7 +66,7 @@ export function Pokedex() {
     })
 
     return (
-        <div className="font-pixel text-[12px] flex flex-col items-center justify-center space-y-4 mt-4">
+        <div className="text-[12px] space-y-8">
             <div className="flex flex-col md:flex-row justify-center items-center gap-4">
                 <h1 className="font-semibold text-center text-lg my-4">Pokedex</h1>
                 <form onSubmit={(e) => {
@@ -86,7 +86,7 @@ export function Pokedex() {
                                     {pokemonCardList(data.data.pokemons)}
                                 </div>
                                 <Pagination>
-                                    <PaginationContent>
+                                    <PaginationContent className="scale-[0.7] md:scale-100">
                                         <PaginationItem>
                                             <PaginationPrevious href="#" onClick={() => handlePreviousPage()} />
                                         </PaginationItem>

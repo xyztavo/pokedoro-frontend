@@ -31,13 +31,13 @@ export default function User() {
         },
         onSuccess: () => {
             // pokemonspokedex
-            queryClient.invalidateQueries({ queryKey: ['pokemonspokedex']})
+            queryClient.invalidateQueries({ queryKey: ['pokemonspokedex'] })
         }
     })
 
     return (
-        <div className="flex flex-col justify-center items-center">
-            <h1 className="mt-4">Account</h1>
+        <>
+            <h1 className="mt-4 text-center">Account</h1>
             {isSuccess &&
                 <Dialog defaultOpen>
                     <DialogContent>
@@ -58,7 +58,7 @@ export default function User() {
                     </DialogContent>
                 </Dialog>
             }
-             {isError &&
+            {isError &&
                 <Dialog defaultOpen>
                     <DialogContent>
                         <DialogHeader className="space-y-4">
@@ -74,11 +74,11 @@ export default function User() {
                 </Dialog>
             }
             <UserPokemons />
-            <div className="flex flex-row">
-            <Button disabled={isPending} onClick={() => {
+            <div className="flex flex-row justify-center mt-4">
+                <Button disabled={isPending} onClick={() => {
                     mutateAddPokemon()
-                }}>{isPending ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" />Loading pokemon...</> : `Get me a random pokemon`}</Button>
+                }}>{isPending ? <><Loader2 className="mr-2 h-4 w-4 animate-spin text-center mt-4" />Loading pokemon...</> : `Get me a random pokemon`}</Button>
             </div>
-        </div>
-    )
+        </>
+    )   
 }
