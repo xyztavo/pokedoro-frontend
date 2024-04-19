@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Button, buttonVariants } from "../ui/button";
+import { buttonVariants } from "../ui/button";
 import { checkUser, getUser } from "@/lib/auth/userAuth";
 import {
     DropdownMenu,
@@ -20,10 +20,8 @@ export default function LoginButton() {
 
 
     return (
-        isLoggedIn ? <DropdownMenu>
-            <Button variant={"secondary"} asChild>
-                <DropdownMenuTrigger>{userData.name}</DropdownMenuTrigger>
-            </Button>
+        isLoggedIn ? <DropdownMenu >
+            <DropdownMenuTrigger className="max-w-48 whitespace-nowrap text-ellipsis overflow-clip text-center bg-secondary p-2 rounded-md hover:bg-muted-foreground transition-all">{userData.name}</DropdownMenuTrigger>
             <DropdownMenuContent>
                 <DropdownMenuItem onClick={() => navigate('/user')}>My Account</DropdownMenuItem>
                 <DropdownMenuSeparator />
