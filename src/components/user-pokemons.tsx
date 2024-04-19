@@ -85,7 +85,7 @@ export default function UserPokemons() {
                                 <div className="flex flex-row flex-wrap justify-center items-center gap-4">
                                     {pokemonCardList(data.data.user.pokemons)}
                                 </div>
-                                <Pagination >
+                                <Pagination className="scale-75 md:scale-100">
                                     <PaginationContent>
                                         <PaginationItem>
                                             <PaginationPrevious href="#" onClick={() => handlePreviousPage()} />
