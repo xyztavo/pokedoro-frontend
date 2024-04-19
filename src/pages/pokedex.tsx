@@ -67,7 +67,7 @@ export function Pokedex() {
     })
 
     return (
-        <div className="text-[12px] space-y-8">
+        <div className="font-pixel text-[12px] space-y-8 p-2 flex flex-col items-center justify-center">
             <div className="flex flex-col md:flex-row justify-center items-center gap-4">
                 <h1 className="font-semibold text-center text-lg my-4">Pokedex</h1>
                 <form onSubmit={(e) => {
@@ -80,7 +80,7 @@ export function Pokedex() {
             </div>
             {isLoading || isPending || isFetching ? <Loader /> :
                 isError ? <div>No pokemons found</div> :
-                    data?.data.pokemons.length < 1 ? <div>no </div> :
+                    data?.data.pokemons.length < 1 ? <div>no pokemons found</div> :
                         (data &&
                             <div className="space-y-8">
                                 <div className="flex flex-row flex-wrap justify-center items-center gap-4">
