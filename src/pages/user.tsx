@@ -77,7 +77,7 @@ export default function User() {
             <div className="flex flex-row justify-center mt-4">
                 <Button disabled={isPending} onClick={() => {
                     mutateAddPokemon()
-                }}>{isPending ? <><Loader2 className="mr-2 h-4 w-4 animate-spin text-center mt-4" />Loading pokemon...</> : `Get me a random pokemon`}</Button>
+                }} className="flex flex-row items-center justify-center gap-4">{isPending ? <><Loader2 className=" animate-spin" />Loading pokemon...</> : `Get me a random pokemon`}</Button>
             </div>
         </>
     )   
