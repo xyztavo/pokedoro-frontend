@@ -10,7 +10,7 @@ export default function pokemonCardList(pokemonsArray: TPokemon[]) {
                 }
                 )}</div>
             <div className="flex rounded-md w-40 h-40 items-center justify-center box-border border-b">
-                <img src={`https://raw.githubusercontent.com/wellrccity/pokedex-html-js/master/assets/img/pokemons/poke_${pokemon.id}.gif`} className="max-w-full max-h-full" />
+                <img src={`https://raw.githubusercontent.com/gustafer/pokedata/main/pokemon-gifs/poke_${pokemon.id}.gif`} className="max-w-full max-h-full" />
             </div>
             <h1 className="text-center p-2">{pokemon.name}</h1>
         </div>
