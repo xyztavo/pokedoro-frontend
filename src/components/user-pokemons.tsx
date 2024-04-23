@@ -62,6 +62,7 @@ export default function UserPokemons() {
             })
             return response
         },
+        retry: false,
         enabled: checkUser()
     })
     const userData = getUser()

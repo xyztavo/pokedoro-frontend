@@ -63,7 +63,9 @@ export function Pokedex() {
         queryKey: ['pokemonspokedex', page, isPokemonQuery], queryFn: () => {
             const response = axios.get(`https://pokedoro-backend.onrender.com/pokemon?pageIndex=${page ? alteredPage : 0}&query=${pokemonQuery}`)
             return response
-        }, refetchOnWindowFocus: false
+        },
+        retry: false,
+        refetchOnWindowFocus: false
     })
 
     return (
@@ -79,42 +81,41 @@ export function Pokedex() {
                 </form>
             </div>
             {isLoading || isPending || isFetching ? <Loader /> :
-                isError ? <div>No pokemons found</div> :
-                    data?.data.pokemons.length < 1 ? <div>no pokemons found</div> :
-                        (data &&
-                            <div className="space-y-8">
-                                <div className="flex flex-row flex-wrap justify-center items-center gap-4">
-                                    {pokemonCardList(data.data.pokemons)}
-                                </div>
-                                <Pagination>
-                                    <PaginationContent className="scale-[0.7] md:scale-100">
-                                        <PaginationItem>
-                                            <PaginationPrevious href="#" onClick={() => handlePreviousPage()} />
-                                        </PaginationItem>
-                                        <PaginationItem>
-                                            <PaginationLink href="#" onClick={() => handlePreviousPage()}>{Number(page) - 1}</PaginationLink>
-                                        </PaginationItem>
-                                        <PaginationItem>
-                                            <PaginationLink href="#" isActive>
-                                                {page}
-                                            </PaginationLink>
-                                        </PaginationItem>
-                                        <PaginationItem>
-                                            <PaginationLink href="#" onClick={() => handleNextPage()}>{Number(page) + 1}</PaginationLink>
-                                        </PaginationItem>
-                                        <PaginationItem>
-                                            <Button className="flex flex-row items-center" size={'sm'} variant={'ghost'} onClick={() => handlePage(data.data.totalPages)}>
-                                                <PaginationEllipsis />
-                                                <h1>{data.data.totalPages}</h1>
-                                            </Button>
-                                        </PaginationItem>
-                                        <PaginationItem>
-                                            <PaginationNext href="#" onClick={() => { handleNextPage() }} />
-                                        </PaginationItem>
-                                    </PaginationContent>
-                                </Pagination>
+                isError || data?.data.pokemons.length < 1 ? <div className="text-center">No pokemons found</div> :
+                    (data &&
+                        <div className="space-y-8">
+                            <div className="flex flex-row flex-wrap justify-center items-center gap-4">
+                                {pokemonCardList(data.data.pokemons)}
                             </div>
-                        )
+                            <Pagination>
+                                <PaginationContent className="scale-[0.7] md:scale-100">
+                                    <PaginationItem>
+                                        <PaginationPrevious href="#" onClick={() => handlePreviousPage()} />
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationLink href="#" onClick={() => handlePreviousPage()}>{Number(page) - 1}</PaginationLink>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationLink href="#" isActive>
+                                            {page}
+                                        </PaginationLink>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationLink href="#" onClick={() => handleNextPage()}>{Number(page) + 1}</PaginationLink>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <Button className="flex flex-row items-center" size={'sm'} variant={'ghost'} onClick={() => handlePage(data.data.totalPages)}>
+                                            <PaginationEllipsis />
+                                            <h1>{data.data.totalPages}</h1>
+                                        </Button>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationNext href="#" onClick={() => { handleNextPage() }} />
+                                    </PaginationItem>
+                                </PaginationContent>
+                            </Pagination>
+                        </div>
+                    )
             }
         </div>
     )
