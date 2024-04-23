@@ -24,12 +24,18 @@ import { useNavigate } from "react-router-dom";
 const registerSchema = z.object({
     name: z.string().min(2, {
         message: "Username must be at least 2 characters.",
+    }).max(100, {
+        message: "max characters reached"
     }),
     email: z.string().min(2).email({
         message: "Invalid email received."
+    }).max(100, {
+        message: "max characters reached"
     }),
     password: z.string().min(6, {
         message: "Password must contain at least 6 characters."
+    }).max(100, {
+        message: "max characters reached"
     }),
 })
 
@@ -62,7 +68,8 @@ export default function Register() {
         }
 
         if (error) {
-            toast.error("User email already registered!")
+            toast.error("Either account doesnt exists or password doesnt match")
+            //todo ID: 1 add validation to error and return specific error messages.
         }
     }, [isSuccess, error])
 
