@@ -79,8 +79,8 @@ export default function UserPokemons() {
                         </form>
                     </div>
                     {isLoading || isPending || isFetching ? <Loader /> :
-                        isError ? <p>No pokemons found</p> :
-                            data?.data.user.pokemons.length < 1 ? <div className="flex flex-col">You got no pokemons :C</div> :
+                        isError ? <p className="text-center">No pokemons found</p> :
+                            data?.data.user.pokemons.length < 1 ? <div className="text-center">You got no pokemons :C</div> :
                                 (data &&
                                     <div className="space-y-8">
                                         <div className="flex flex-row flex-wrap justify-center items-center gap-4">
