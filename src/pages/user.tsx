@@ -7,7 +7,6 @@ import {
     Dialog,
     DialogContent,
     DialogDescription,
-    DialogHeader,
     DialogTitle,
 } from "@/components/ui/dialog"
 import checkTypeReturnIcon from "@/lib/utils/checkTypeReturnIcon";
@@ -46,7 +45,7 @@ export default function User() {
             {isSuccess &&
                 <Dialog defaultOpen>
                     <DialogContent>
-                        <DialogHeader className="space-y-4">
+                        <div className="space-y-4 p-4">
                             <DialogTitle className="text-center">{data.newPokemon.name} was found!</DialogTitle>
                             <DialogDescription className="flex items-center justify-center flex-col space-y-4">
                                 <img src={`https://raw.githubusercontent.com/wellrccity/pokedex-html-js/master/assets/img/pokemons/poke_${data.newPokemon.id}.gif`} />
@@ -59,14 +58,14 @@ export default function User() {
                                     ))}
                                 </div>
                             </DialogDescription>
-                        </DialogHeader>
+                        </div>
                     </DialogContent>
                 </Dialog>
             }
             {isError &&
                 <Dialog defaultOpen>
                     <DialogContent>
-                        <DialogHeader className="space-y-4">
+                        <div className="space-y-4  p-4">
                             <DialogTitle className="text-center">No new pokemons were found.</DialogTitle>
                             <DialogDescription className="flex items-center justify-center flex-col space-y-4">
                                 <img src={`https://raw.githubusercontent.com/wellrccity/pokedex-html-js/master/assets/img/pokemons/poke_1.gif`} />
@@ -74,7 +73,7 @@ export default function User() {
                                     Perhaps you should try again
                                 </div>
                             </DialogDescription>
-                        </DialogHeader>
+                        </div>
                     </DialogContent>
                 </Dialog>
             }
