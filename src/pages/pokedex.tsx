@@ -67,8 +67,8 @@ export function Pokedex() {
     })
 
     return (
-        <div className="font-pixel text-[12px] space-y-8 p-2 flex flex-col items-center justify-center">
-            <div className="flex flex-col md:flex-row justify-center items-center gap-4">
+        <div className="font-pixel text-[12px]">
+            <div className="flex flex-col md:flex-row justify-center items-center gap-4 my-8">
                 <h1 className="font-semibold text-center text-lg my-4">Pokedex</h1>
                 <form onSubmit={(e) => {
                     e.preventDefault()
