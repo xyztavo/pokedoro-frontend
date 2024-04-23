@@ -18,6 +18,7 @@ import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { toast } from "sonner";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 const registerSchema = z.object({
@@ -33,6 +34,8 @@ const registerSchema = z.object({
 })
 
 export default function Register() {
+    const navigate = useNavigate();
+
     // 1. Define your form.
     const form = useForm<z.infer<typeof registerSchema>>({
         resolver: zodResolver(registerSchema),
@@ -54,8 +57,8 @@ export default function Register() {
     
     useEffect(() => {
         if (isSuccess) {
-            location.reload()
             toast.success("user created!")
+            navigate('/login')
         }
 
         if (error) {
