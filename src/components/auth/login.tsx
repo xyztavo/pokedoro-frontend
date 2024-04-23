@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 
 import {
     Form,
@@ -40,11 +40,18 @@ export default function Login() {
         },
     })
 
-    const { mutate: mutateLogin, isPending, error, isSuccess, data } = useMutation({
+    const { mutate: mutateLogin, isPending, isSuccess, data } = useMutation({
         mutationFn: async (values: z.infer<typeof loginSchema>) => {
             const response = await axios.post('https://pokedoro-backend.onrender.com/user/login', values)
             return response.data
-        },
+        },onError: (err: AxiosError) => {
+            if(err.response?.status === 404) {
+                toast.error("User not found")
+            }
+            if(err.response?.status === 401) {
+                toast.error("Password does not match.")
+            }
+          }
     })
 
     // 2. Define a submit handler.
@@ -59,11 +66,9 @@ export default function Login() {
             navigate('/user')
         }
 
-        if (error) {
-            toast.error("Password does not match")
-        }
+     
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isSuccess, error])
+    }, [isSuccess])
 
 
 
