@@ -4,10 +4,11 @@ import './index.css'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { Home } from './pages/home.tsx'
 import App from './App.tsx'
-import Login from './pages/loginPage.tsx'
 import { Pokedex } from './pages/pokedex.tsx'
 import User from './pages/user.tsx'
 import { ProtectedRoute } from './components/protected-route.tsx'
+import { RegisterPage } from './pages/register-page.tsx'
+import { LoginPage } from './pages/login-page.tsx'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -15,7 +16,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <Routes>
         <Route element={<App />}>
           <Route path='/' element={<Home />} />
-          <Route path='/login' element={<Login />} />
+          <Route path='/login' element={<LoginPage />} />
+          <Route path='/register' element={<RegisterPage />} />
           <Route element={<ProtectedRoute />}>
             <Route path='/user' element={<User />} />
           </Route>
