@@ -52,7 +52,7 @@ export default function Register() {
     const { mutate: mutateRegister, isPending, error, isSuccess } = useMutation({
         mutationFn: (values: z.infer<typeof registerSchema>) => {
             return axios.post('https://pokedoro-backend.onrender.com/user', values)
-        },
+        }, 
     })
 
 
@@ -68,8 +68,8 @@ export default function Register() {
         }
 
         if (error) {
-            toast.error("Either account doesnt exists or password doesnt match")
-            //todo ID: 1 add validation to error and return specific error messages.
+            toast.error("Something went wrong.")
+            //todo ID: add validation to error and return specific error messages.
         }
     }, [isSuccess, error])
 
